@@ -3,11 +3,14 @@
 # GBounty Profiles Designer
 
 [![GitHub release](https://img.shields.io/github/release/bountysecurity/GBountyProfilesDesigner.svg)](https://github.com/bountysecurity/GBountyProfilesDesigner/releases)
+[![GitHub Downloads](https://img.shields.io/github/downloads/bountysecurity/GBountyProfilesDesigner/total.svg)]() 
 [![GitHub contributors](https://img.shields.io/github/contributors/bountysecurity/GBountyProfilesDesigner.svg)](https://github.com/bountysecurity/GBountyProfilesDesigner/graphs/contributors)
 [![GitHub last commit](https://img.shields.io/github/last-commit/bountysecurity/GBountyProfilesDesigner.svg)](https://github.com/bountysecurity/GBountyProfilesDesigner/commits/main)
 [![GitHub issues](https://img.shields.io/github/issues/bountysecurity/GBountyProfilesDesigner.svg)](https://github.com/bountysecurity/GBountyProfilesDesigner/issues)
 [![GitHub forks](https://img.shields.io/github/forks/bountysecurity/GBountyProfilesDesigner.svg)](https://github.com/bountysecurity/GBountyProfilesDesigner/network)
 [![GitHub stars](https://img.shields.io/github/stars/bountysecurity/GBountyProfilesDesigner.svg)](https://github.com/bountysecurity/GBountyProfilesDesigner/stargazers)
+[![GitHub Followers](https://img.shields.io/github/followers/bountysecurity.svg?style=social&label=Follow)](https://github.com/bountysecurity/GBountyProfilesDesigner/)
+[![Follow on Twitter](https://img.shields.io/twitter/follow/GBountyProfilesDesigner.svg?style=social&label=Follow)](https://twitter.com/intent/follow?screen_name=BountySecurity)
 
 GBounty Profiles Designer empowers you to design intricate multistep web vulnerability profiles using a user-friendly graphical interface.
 
