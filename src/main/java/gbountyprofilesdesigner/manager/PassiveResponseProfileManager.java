@@ -153,14 +153,6 @@ public class PassiveResponseProfileManager {
             newfile.setTags(tags);
         }
 
-//            if (profile.radio4.isSelected()) {
-//                newfile.setMatchType("simple_string");
-//            } else if (profile.radio3.isSelected()) {
-//                newfile.setMatchType("regex");
-//            } else {
-//                newfile.setMatchType("simple_string");
-//            }
-
         if (profile.first_match.isSelected()) {
             newfile.setShowAlert("one");
         } else if (profile.all_matches.isSelected()) {
