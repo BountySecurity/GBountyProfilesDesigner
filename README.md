@@ -34,7 +34,7 @@ GBounty is a standalone command-line website vulnerability scanner developed in 
 - **Integrable:** Can be integrated into your CI scans and runs on Linux, Windows, and macOS.
 - **Valuable Information Collection:** Identifies vulnerable parameters, detects software versions, and more.
 
-See the [[Documentation](https://gbounty.bountysecurity.ai/)] URL for more information.
+See the [Documentation](https://gbounty.bountysecurity.ai/) URL for more information.
 
 ## Project Statistics
 
@@ -43,7 +43,7 @@ See the [[Documentation](https://gbounty.bountysecurity.ai/)] URL for more infor
 
 ## Documentation
 
-For more details on how to use GBounty Profiles Designer, please visit the ([Documentation](https://gbounty.bountysecurity.ai/gbounty-profiles-designer)) URL.
+For more details on how to use GBounty Profiles Designer, please visit the [Documentation](https://gbounty.bountysecurity.ai/gbounty-profiles-designer) URL.
 
 ## Contributions
 
