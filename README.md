@@ -47,7 +47,7 @@ For more details on how to use GBounty Profiles Designer, please visit the [Docu
 
 ## Contributions
 
-Contributions are welcome! Please read our [Code of Conduct](CODE_OF_CONDUCT.md) and [Contribution Guidelines](CONTRIBUTING.md) before getting started.
+Contributions are welcome!
 
 ## License
 
