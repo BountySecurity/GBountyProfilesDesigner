@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gbountyprofilesdesigner.gui;
 
 import gbountyprofilesdesigner.manager.ActiveProfile;
@@ -30,10 +25,6 @@ import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.table.*;
 
-/**
- *
- * @author wagiro
- */
 public class GBountyProfilesGui extends javax.swing.JFrame {
 
     public static String filename;
