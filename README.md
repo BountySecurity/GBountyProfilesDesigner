@@ -3,8 +3,6 @@
 # GBounty Profiles Designer
 
 [![GitHub release](https://img.shields.io/github/release/bountysecurity/GBountyProfilesDesigner.svg)](https://github.com/bountysecurity/GBountyProfilesDesigner/releases)
-[![GitHub Downloads](https://img.shields.io/github/downloads/bountysecurity/GBountyProfilesDesigner/total.svg)]() 
-[![GitHub contributors](https://img.shields.io/github/contributors/bountysecurity/GBountyProfilesDesigner.svg)](https://github.com/bountysecurity/GBountyProfilesDesigner/graphs/contributors)
 [![GitHub last commit](https://img.shields.io/github/last-commit/bountysecurity/GBountyProfilesDesigner.svg)](https://github.com/bountysecurity/GBountyProfilesDesigner/commits/main)
 [![GitHub issues](https://img.shields.io/github/issues/bountysecurity/GBountyProfilesDesigner.svg)](https://github.com/bountysecurity/GBountyProfilesDesigner/issues)
 [![GitHub forks](https://img.shields.io/github/forks/bountysecurity/GBountyProfilesDesigner.svg)](https://github.com/bountysecurity/GBountyProfilesDesigner/network)
