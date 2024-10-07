@@ -1,4 +1,4 @@
-# ![GBounty Profiles Designer Logo](/src/main/resources/Logo_big.png)
+# ![GBounty Profiles Designer Logo](/static/logo.png)
 
 # GBounty Profiles Designer
 
@@ -13,6 +13,8 @@
 GBounty Profiles Designer empowers you to design intricate multistep web vulnerability profiles using a user-friendly graphical interface.
 
 This tool streamlines the process of creating and customizing GBounty vulnerability profiles, enabling swift integration of novel web vulnerabilities into your assessments.
+
+# ![GBounty Profiles Designer Logo](/static/GBountyProfilesDesigner.png)
 
 **Key Features:**
 
