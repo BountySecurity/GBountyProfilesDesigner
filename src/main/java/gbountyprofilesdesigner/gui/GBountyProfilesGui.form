@@ -679,7 +679,7 @@
                     <Property name="text" type="java.lang.String" value="Reload"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="reloadProfilesprofilesReload"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="profilesReload"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -923,7 +923,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Arial" size="14" style="0"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;body&gt;&lt;div style=&apos;text-align: center;&apos;&gt;GBounty Profiles Designer 1.0.0 - &lt;span style=&apos;color: #0075A8; text-decoration: underline; cursor: hand;&apos;&gt;https://github.com/BountySecurity/GBountyProfilesDesigner&lt;/span&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"/>
+                        <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;body&gt;&lt;div style=&apos;text-align: center;&apos;&gt;GBounty Profiles Designer v1.0.1 - &lt;span style=&apos;color: #0075A8; text-decoration: underline; cursor: hand;&apos;&gt;https://github.com/BountySecurity/GBountyProfilesDesigner&lt;/span&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"/>
                         <Property name="horizontalTextPosition" type="int" value="4"/>
                       </Properties>
                       <Events>

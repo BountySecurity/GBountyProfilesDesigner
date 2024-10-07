@@ -44,7 +44,7 @@ public class GBountyProfilesGui extends javax.swing.JFrame {
     private ProfileManager profileManager;
 
     public GBountyProfilesGui() {
-        filename = System.getProperty("user.dir") + File.separator + "profiles" + File.separator;
+        filename = System.getProperty("user.home") + File.separator + ".gbounty" + File.separator + "profiles" + File.separator;
         tagsmodel = new DefaultTableModel();
         allprofiles = new JsonArray();
         activeprofiles = new JsonArray();
@@ -66,7 +66,7 @@ public class GBountyProfilesGui extends javax.swing.JFrame {
                 properties.load(input);
                 filename = properties.getProperty("lastUsedDirectory");
                 if (filename == null) {
-                    filename = System.getProperty("user.dir") + File.separator + "profiles" + File.separator;
+                    filename = System.getProperty("user.home") + File.separator + ".gbounty" + File.separator + "profiles" + File.separator;
                 }
             } catch (IOException ex) {
                 ex.printStackTrace();
@@ -120,6 +120,7 @@ public class GBountyProfilesGui extends javax.swing.JFrame {
         showTagsTable();
         showTags();
         showProfiles("All");
+        profilesRel();
     }
 
     /**
@@ -149,7 +150,7 @@ public class GBountyProfilesGui extends javax.swing.JFrame {
         return allprofiles;
     }
 
-    public class profilesModelListener implements TableModelListener {
+    public class ProfilesModelListener implements TableModelListener {
 
         @Override
         public void tableChanged(TableModelEvent e) {
@@ -157,41 +158,43 @@ public class GBountyProfilesGui extends javax.swing.JFrame {
             int column = e.getColumn();
             TableModel model = (TableModel) e.getSource();
 
-            // Verificar si la columna "Enabled" ha cambiado
+            // Check if the "Enabled" column has changed
             if (column == 0) {
-                Boolean checked = (Boolean) model.getValueAt(row, column);
+                boolean isChecked = (Boolean) model.getValueAt(row, column);
                 String profileName = model.getValueAt(row, 1).toString();
                 String profileFilePath = filename + profileName + ".bb2";
 
-                try {
-                    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                updateProfileEnabledStatus(profileFilePath, isChecked);
+            }
+        }
 
-                    // Leer el perfil desde el archivo
-                    ActiveProfileProperties profileProperties;
-                    try (Reader reader = new InputStreamReader(
-                            new FileInputStream(profileFilePath), StandardCharsets.UTF_8)) {
-                        profileProperties = gson.fromJson(reader, ActiveProfileProperties.class);
-                        if (profileProperties == null) {
-                            System.err.println("No se encontraron datos en el archivo: " + profileFilePath);
-                            return;
-                        }
+        private void updateProfileEnabledStatus(String profileFilePath, boolean isEnabled) {
+            try {
+                Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+                // Read the profile from the file
+                JsonArray jsonArray;
+                try (Reader reader = new InputStreamReader(new FileInputStream(profileFilePath), StandardCharsets.UTF_8)) {
+                    jsonArray = gson.fromJson(reader, JsonArray.class);
+                    if (jsonArray == null || jsonArray.size() == 0) {
+                        System.err.println("No data found in file: " + profileFilePath);
+                        return;
                     }
-
-                    // Actualizar el estado "enabled"
-                    profileProperties.setEnabled(checked);
-
-                    // Escribir el perfil actualizado de vuelta al archivo
-                    try (Writer writer = new OutputStreamWriter(
-                            new FileOutputStream(profileFilePath), StandardCharsets.UTF_8)) {
-                        gson.toJson(profileProperties, writer);
-                    }
-
-                    // Refrescar los perfiles
-                    checkActiveProfilesProperties(filename);
-
-                } catch (IOException ex) {
-                    ex.printStackTrace();
                 }
+
+                // Update the "enabled" state of the first profile
+                JsonObject jsonObject = jsonArray.get(0).getAsJsonObject();
+                jsonObject.addProperty("enabled", isEnabled);
+
+                // Write the updated profile back to the file
+                try (Writer writer = new OutputStreamWriter(new FileOutputStream(profileFilePath), StandardCharsets.UTF_8)) {
+                    gson.toJson(jsonArray, writer);
+                }
+
+                // Profiles refresh
+                checkActiveProfilesProperties(filename);
+            } catch (IOException ex) {
+                ex.printStackTrace();
             }
         }
     }
@@ -209,21 +212,21 @@ public class GBountyProfilesGui extends javax.swing.JFrame {
         table3.setRowSorter(sorter);
         sorter.setSortKeys(Collections.singletonList(new RowSorter.SortKey(1, SortOrder.ASCENDING)));
         table3.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-        table3.getModel().addTableModelListener(new profilesModelListener());
+        table3.getModel().addTableModelListener(new ProfilesModelListener());
 
         // Repeat similar setup for model1 and table1 (passive request)
         model1.setRowCount(0);
         model1.setColumnIdentifiers(new Object[]{"Enabled", "Profile Name", "Author's Twitter"});
         configureTable(table1, model1, new int[]{90, 800, 150}, new int[]{90, 800, 150});
         setupTableSorter(table1, model1);
-        table1.getModel().addTableModelListener(new profilesModelListener());
+        table1.getModel().addTableModelListener(new ProfilesModelListener());
 
         // Repeat similar setup for model2 and table2 (passive response)
         model2.setRowCount(0);
         model2.setColumnIdentifiers(new Object[]{"Enabled", "Profile Name", "Author's Twitter"});
         configureTable(table2, model2, new int[]{90, 800, 150}, new int[]{90, 800, 150});
         setupTableSorter(table2, model2);
-        table2.getModel().addTableModelListener(new profilesModelListener());
+        table2.getModel().addTableModelListener(new ProfilesModelListener());
 
         if (profiles != null) {
             for (JsonElement element : profiles) {
@@ -704,7 +707,7 @@ public class GBountyProfilesGui extends javax.swing.JFrame {
         reloadProfiles.setText("Reload");
         reloadProfiles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                reloadProfilesprofilesReload(evt);
+                profilesReload(evt);
             }
         });
 
@@ -850,7 +853,7 @@ public class GBountyProfilesGui extends javax.swing.JFrame {
         jLabel55.setText("About.");
 
         jLabel10.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel10.setText("<html><body><div style='text-align: center;'>GBounty Profiles Designer 1.0.0 - <span style='color: #0075A8; text-decoration: underline; cursor: hand;'>https://github.com/BountySecurity/GBountyProfilesDesigner</span></div></body></html>");
+        jLabel10.setText("<html><body><div style='text-align: center;'>GBounty Profiles Designer v1.0.1 - <span style='color: #0075A8; text-decoration: underline; cursor: hand;'>https://github.com/BountySecurity/GBountyProfilesDesigner</span></div></body></html>");
         jLabel10.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1676,9 +1679,9 @@ public class GBountyProfilesGui extends javax.swing.JFrame {
         loadConfigFile();
     }//GEN-LAST:event_selectDirectoryloadConfigFile
 
-    private void reloadProfilesprofilesReload(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reloadProfilesprofilesReload
+    private void profilesReload(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profilesReload
         profilesRel();
-    }//GEN-LAST:event_reloadProfilesprofilesReload
+    }//GEN-LAST:event_profilesReload
 
     /**
      * Main method.

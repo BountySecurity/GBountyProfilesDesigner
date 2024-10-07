@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>gbountyprofilesdesigner</groupId>
     <artifactId>GBountyProfilesDesigner</artifactId>
-    <version>1.0</version>
+    <version>v1.0.1</version>
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
@@ -21,7 +21,7 @@
         <dependency>
             <groupId>com.formdev</groupId>
             <artifactId>flatlaf</artifactId>
-            <version>3.2.5</version>
+            <version>3.5.1</version>
         </dependency>
     </dependencies>
     <properties>
@@ -54,5 +54,5 @@
         </plugin>
         </plugins>
     </build>
-    <name>GBountyProfilesDesigner_v1.0.0</name>
+    <name>GBountyProfilesDesigner_v1.0.1</name>
 </project>
