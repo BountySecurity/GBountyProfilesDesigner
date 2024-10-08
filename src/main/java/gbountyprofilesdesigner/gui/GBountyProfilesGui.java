@@ -44,25 +44,38 @@ public class GBountyProfilesGui extends javax.swing.JFrame {
     private ProfileManager profileManager;
 
     public GBountyProfilesGui() {
+        // Define the configuration directory
         filename = System.getProperty("user.home") + File.separator + ".gbounty" + File.separator + "profiles" + File.separator;
+
+        // Create the directory if it does not exist
+        File directory = new File(filename);
+        if (!directory.exists()) {
+            directory.mkdirs(); // Create all necessary directories
+        }
+
+        // Initialize models and arrays
         tagsmodel = new DefaultTableModel();
         allprofiles = new JsonArray();
         activeprofiles = new JsonArray();
 
+        // Configuration for properties file
         Properties properties = new Properties();
         File configFile = new File("config.properties");
+
         if (!configFile.exists()) {
             try {
+                // Create the configuration file if it does not exist
                 configFile.createNewFile();
                 properties.setProperty("lastUsedDirectory", filename);
-                OutputStream output = new FileOutputStream("config.properties");
-                properties.store(output, "Configuration for profiles directory");
-
+                try (OutputStream output = new FileOutputStream("config.properties")) {
+                    properties.store(output, "Configuration for profiles directory");
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } else {
             try (InputStream input = new FileInputStream("config.properties")) {
+                // Load properties from the existing file
                 properties.load(input);
                 filename = properties.getProperty("lastUsedDirectory");
                 if (filename == null) {
@@ -70,7 +83,6 @@ public class GBountyProfilesGui extends javax.swing.JFrame {
                 }
             } catch (IOException ex) {
                 ex.printStackTrace();
-
             }
         }
 
