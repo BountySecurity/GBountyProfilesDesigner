@@ -865,7 +865,7 @@ public class GBountyProfilesGui extends javax.swing.JFrame {
         jLabel55.setText("About.");
 
         jLabel10.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel10.setText("<html><body><div style='text-align: center;'>GBounty Profiles Designer v1.0.1 - <span style='color: #0075A8; text-decoration: underline; cursor: hand;'>https://github.com/BountySecurity/GBountyProfilesDesigner</span></div></body></html>");
+        jLabel10.setText("<html><body><div style='text-align: center;'>GBounty Profiles Designer v1.0.2 - <span style='color: #0075A8; text-decoration: underline; cursor: hand;'>https://github.com/BountySecurity/GBountyProfilesDesigner</span></div></body></html>");
         jLabel10.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
